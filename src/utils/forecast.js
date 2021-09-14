@@ -1,20 +1,18 @@
 const request = require('postman-request');
 
 const forecast = (zipcode, callback) => {
-    const url = `http://api.weatherstack.com/current?access_key=18facea61227463c97039d0598f79fbd&query=${zipcode}&units=m`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&APPID=e02a3414e003776ddfd4d6603a56cbca&units=metric`;
 
     request({ url, json: true }, (err, { body }) => {
         if (err) {
             callback('Unable to connect to weather services!', undefined);
-        } else if (body.error) {
+        } else if (body.message && body.cod) {
             callback('Unable to find location. Try another search!', undefined);
         } else {
-            let data = {
-                temp: body.current.temperature,
-                location: `${body.location.name}, ${body.location.region}, ${body.location.country}`,
-                localtime: body.location.localtime
+            let projectData = {
+                temp: body.main.temp
             }
-            callback(undefined, data);
+            callback(undefined, projectData);
         }
     });
 };

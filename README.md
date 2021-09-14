@@ -8,6 +8,7 @@ To try this app you should install the these packages
 1. express
 2. path
 3. postman-request
+then run with this command 'npm run start'
 
 ## Developed by
 Mustafa Abdelkawy

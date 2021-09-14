@@ -1,5 +1,4 @@
 /* Global Variables */
-let loc = document.getElementById('location');
 let date = document.getElementById('date');
 let temp = document.getElementById('temp');
 let content = document.getElementById('content');
@@ -12,18 +11,16 @@ let newDate = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()} ${d.getHours(
 document.querySelector('button').addEventListener('click', (event) => {
     event.preventDefault();
     const zipcode = zip.value;
-    const myFeelings = feelings.value || '-you should provide you feelings-';
-    loc.textContent = 'Loading...';
-    date.textContent = '';
+    const myFeelings = feelings.value || '-you should provide your feelings-';
+    date.textContent = 'Loading...';
     temp.textContent = '';
     content.textContent = '';
     fetch(`http://localhost:3000/weather?zipcode=${zipcode}`).then((res) => {
         res.json().then((data) => {
             if (data.error) {
-                loc.textContent = data.error;
+                date.textContent = data.error;
             } else {
-                loc.textContent = `The location: ${data.body.location}`;
-                date.textContent = `The location date: ${data.body.localtime}. Your current date: ${newDate}.`;
+                date.textContent = `Your current date: ${newDate}.`;
                 temp.textContent = `The location tempreture is ${data.body.temp} Celsius degree`;
                 content.textContent = `Your current feeling is ${myFeelings}`;
             }
