@@ -15,7 +15,7 @@ document.querySelector('button').addEventListener('click', (event) => {
     date.textContent = 'Loading...';
     temp.textContent = '';
     content.textContent = '';
-    fetch(`/weather?zipcode=${zipcode}`).then((res) => {
+    fetch(`http://localhost:3000/weather?zipcode=${zipcode}`).then((res) => {
         res.json().then((data) => {
             if (data.error) {
                 date.textContent = data.error;
