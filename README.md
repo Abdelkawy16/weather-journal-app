@@ -7,7 +7,7 @@ This is the second project of FWD professional track that requires to create an 
 To try this app you should install the these packages
 1. express
 2. path
-3. postman-request
+3. body-parse
 then run with this command 'npm run start'
 
 ## Developed by
